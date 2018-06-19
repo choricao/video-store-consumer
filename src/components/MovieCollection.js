@@ -27,32 +27,29 @@ class MovieCollection extends Component {
     });
   }
 
-
   renderMovieList = () => {
-    console.log('in render function');
     const movieList = this.state.movies.map((movie) => {
       return (
         <Movie
           key={movie.id}
           title={movie.title}
-          // releaseDate={movie.releaseDate}
-          // image={movie.image}
+          releaseDate={movie.release_date}
+          imageURL={movie.image_url}
           overview={movie.overview}
         />
       );
     });
-    console.log('movie list');
-    console.log(movieList);
     return movieList;
   }
 
   render() {
     return (
       <div className="MovieCollection">
-        <button onClick={this.renderMovieList}>Show Movie Library</button>
+        {this.renderMovieList()}
       </div>
     );
   }
+  
 }
 
 export default MovieCollection;
