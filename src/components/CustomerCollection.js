@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Customer from './Customer.js'
 
-const URL = "http://localhost:3002/customers"
+const URL = "http://localhost:3001/customers"
 
 class CustomerCollection extends Component {
   constructor() {
