@@ -6,19 +6,6 @@ const URL = "http://localhost:3001/movies"
 
 class Movie extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      movie: {
-        title: this.props.title,
-        release_date: this.props.releaseDate,
-        overview: this.props.overview,
-        image_url: this.props.imageURL,
-      }
-    }
-  }
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
@@ -33,13 +20,8 @@ class Movie extends Component {
   }
 
   addMovie = () => {
-    console.log(this.state.movie);
     axios.post(URL +
-      `?title=${this.props.title}
-      &release_date=${this.props.releaseDate}
-      &image_url=${this.props.imageURL}
-      &overview=${this.props.overview}
-      `)
+      `?title=${this.props.title}&release_date=${this.props.releaseDate}&image_url=${this.props.imageURL}&overview=${this.props.overview}`)
     .then((response) => {
       console.log(response)
     })
