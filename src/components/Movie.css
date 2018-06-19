@@ -1,12 +1,14 @@
 .info {
   display: flex;
   margin-top: .75em;
+  justify-content: center;
 }
 
 .movie-container {
-  max-width: 300px;
-  margin: 0px;
-  border: solid thin black;
+  max-width: 350px;
+  margin: 10px;
+  background-color: #f4f9f2;
+  padding: 10px;
 }
 
 .overview, .details, .info {

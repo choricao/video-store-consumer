@@ -52,6 +52,7 @@ class Movie extends Component {
         </div>
         <div className="overview">
           <p>{this.props.overview}</p>
+
         </div>
       </article>
     );
