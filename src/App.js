@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import MovieCollection from './components/MovieCollection.js'
+import MovieCollection from './components/MovieCollection';
+import Movie from './components/Movie';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,6 +9,20 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      selectedMovie: "",
+    }
+  }
+
+  setSelectedMovie = (title) => {
+    this.setState({
+      selectedMovie: title,
+    });
+  }
 
   render() {
     const Home = () => (
@@ -22,12 +37,16 @@ class App extends Component {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/library">Library</Link></li>
+            <li>Selected Movie: {this.state.selectedMovie}</li>
           </ul>
 
           <hr/>
 
-          <Route exact path="/" component={Home}/>
-          <Route path="/library" component={MovieCollection}/>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/library"
+            render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
+            />
         </div>
       </Router>
     );

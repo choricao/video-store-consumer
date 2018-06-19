@@ -5,8 +5,10 @@ import Movie from './Movie.js'
 const URL = "http://localhost:3001/movies"
 
 class MovieCollection extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    console.log(props);
+    console.log(props.selectedMovieCallback);
 
     this.state = {
       movies: []
@@ -36,6 +38,7 @@ class MovieCollection extends Component {
           releaseDate={movie.release_date}
           imageURL={movie.image_url}
           overview={movie.overview}
+          selectedMovieCallback={this.props.selectedMovieCallback}
         />
       );
     });
@@ -49,7 +52,7 @@ class MovieCollection extends Component {
       </div>
     );
   }
-  
+
 }
 
 export default MovieCollection;
