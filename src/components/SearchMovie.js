@@ -46,6 +46,7 @@ class SearchMovies extends Component {
           releaseDate={movie.release_date}
           imageURL={movie.image_url}
           overview={movie.overview}
+          buttonName="Add This Movie to Library"
         />
       );
     });

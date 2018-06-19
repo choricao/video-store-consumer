@@ -37,6 +37,7 @@ class MovieCollection extends Component {
           imageURL={movie.image_url}
           overview={movie.overview}
           selectedMovieCallback={this.props.selectedMovieCallback}
+          buttonName="Select This Movie"
         />
       );
     });

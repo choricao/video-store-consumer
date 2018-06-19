@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import PropTypes from 'prop-types';
 
+const URL = "http://localhost:3001/movies"
+
 class Movie extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      movie: {
+        title: this.props.title,
+        release_date: this.props.releaseDate,
+        overview: this.props.overview,
+        image_url: this.props.imageURL,
+      }
+    }
+  }
 
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -9,10 +25,35 @@ class Movie extends Component {
     imageURL: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
     selectedMovieCallback: PropTypes.func.isRequired,
+    buttonName: PropTypes.string,
   }
 
   selectedMovieCallback = () => {
     this.props.selectedMovieCallback(this.props.title);
+  }
+
+  addMovie = () => {
+    console.log(this.state.movie);
+    axios.post(URL +
+      `?title=${this.props.title}
+      &release_date=${this.props.releaseDate}
+      &image_url=${this.props.imageURL}
+      &overview=${this.props.overview}
+      `)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  renderButton = () => {
+    if (this.props.buttonName === "Select This Movie") {
+      return <button onClick={this.selectedMovieCallback} >{this.props.buttonName}</button>
+    } else if (this.props.buttonName === "Add This Movie to Library") {
+      return <button onClick={this.addMovie} >{this.props.buttonName}</button>
+    }
   }
 
   render() {
@@ -22,7 +63,7 @@ class Movie extends Component {
         <p>{this.props.releaseDate}</p>
         <img src={this.props.imageURL} alt="movie poster" />
         <p>{this.props.overview}</p>
-        <button onClick={this.selectedMovieCallback} >Select This Movie</button>
+        {this.renderButton()}
       </div>
     );
   }
