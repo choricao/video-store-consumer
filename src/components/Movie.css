@@ -1,0 +1,19 @@
+.info {
+  display: flex;
+  margin-top: .75em;
+}
+
+.movie-container {
+  max-width: 300px;
+  margin: 0px;
+  border: solid thin black;
+}
+
+.overview, .details, .info {
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
+p {
+  text-align: justify;
+}

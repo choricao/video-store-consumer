@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import PropTypes from 'prop-types';
+import css from './Movie.css'
 
 const URL = "http://localhost:3001/movies"
 
@@ -40,13 +41,19 @@ class Movie extends Component {
 
   render() {
     return (
-      <div className="Movie">
-        <h2>{this.props.title}</h2>
-        <p>{this.props.releaseDate}</p>
-        <img src={this.props.imageURL} alt="movie poster" />
-        <p>{this.props.overview}</p>
-        {this.renderButton()}
-      </div>
+      <article className="movie-container">
+        <div className="info">
+          <img className="image" src={this.props.imageURL} alt="movie poster" />
+          <div className="details">
+          <h2>{this.props.title}</h2>
+          <p>{this.props.releaseDate}</p>
+          {this.renderButton()}
+          </div>
+        </div>
+        <div className="overview">
+          <p>{this.props.overview}</p>
+        </div>
+      </article>
     );
   }
 
