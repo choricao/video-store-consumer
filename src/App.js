@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 import './App.css';
 import MovieCollection from './components/MovieCollection.js'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isMovieCollectionVisible: false,
-    };
-  }
-
-  showMovieCollection = () => {
-    if (this.state.isMovieCollectionVisible) {
-      return (
-        <MovieCollection />
-      );
-    }
-  }
-
-  changeMovieCollectionVisibility = () => {
-    this.setState({
-      isMovieCollectionVisible: true,
-    });
-  }
 
   render() {
-    return (
-      <div className="App">
-        <h1 className="App-title">Video Store</h1>
-        <button onClick={this.changeMovieCollectionVisibility}>Show Movie Library</button>
-        {this.showMovieCollection()}
+    const Home = () => (
+      <div>
+        <h2>Home</h2>
       </div>
+    )
+
+    return (
+      <Router>
+        <div>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/library">Library</Link></li>
+          </ul>
+
+          <hr/>
+
+          <Route exact path="/" component={Home}/>
+          <Route path="/library" component={MovieCollection}/>
+        </div>
+      </Router>
     );
   }
-  
+
 }
 
 export default App;
