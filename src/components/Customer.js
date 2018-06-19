@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './Customer.css';
 
 class Customer extends Component {
 
@@ -20,10 +21,10 @@ class Customer extends Component {
     console.log('in customer component');
     return (
       <article className="customer-container">
-        <h2>{this.props.name}</h2>
+        <h2 className="card-header">{this.props.name}</h2>
         <p><strong>Phone:</strong> {this.props.phone}</p>
         <p><strong>Account Credit:</strong> ${this.props.accountCredit}</p>
-        <p><strong>Checked Out Movies Count:</strong> {this.props.checkedOutMoviesCount}</p>
+        <p className="movie-count"><strong>Checked Out Movies Count:</strong> {this.props.checkedOutMoviesCount}</p>
         <button onClick={this.selectedCustomerCallback} >Select This Customer</button>
       </article>
     );

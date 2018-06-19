@@ -64,7 +64,7 @@ class SearchMovies extends Component {
             value={this.state.title}
             onChange={this.onFieldChange}
           />
-          <input type="submit" />
+          <input className="button" type="submit" />
         </form>
         {this.renderMovieList()}
       </article>
