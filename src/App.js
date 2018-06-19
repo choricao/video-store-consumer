@@ -52,18 +52,15 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          <ul>
-            <li><Link to="/">Search</Link></li>
-            <li><Link to="/library">Library</Link></li>
-            <li><Link to="/customers">Customers</Link></li>
-            <li>Selected Movie: {this.state.selectedMovie}</li>
-            <li>Selected Customer: {this.state.selectedCustomer}</li>
-            <li><button onClick={this.makeRental}>Make Rental</button></li>
-
-          </ul>
-
-          <hr/>
+        <article>
+          <header>
+            <Link className="button" to="/">Search</Link>
+            <Link className="button" to="/library">Library</Link>
+            <Link className="button" to="/customers">Customers</Link>
+            <p>Selected Movie: {this.state.selectedMovie}</p>
+            <p>Selected Customer: {this.state.selectedCustomer}</p>
+            <button className="button" onClick={this.makeRental}>Make Rental</button>
+          </header>
 
           <Route exact path="/" component={SearchMovie} />
           <Route exact path="/search" component={SearchMovie} />
@@ -75,7 +72,7 @@ class App extends Component {
             path="/customers"
             render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
             />
-        </div>
+        </article>
       </Router>
     );
   }

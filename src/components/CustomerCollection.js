@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import Customer from './Customer.js'
+import './CustomerCollection.css';
 
 const URL = "http://localhost:3001/customers"
 
@@ -46,7 +47,7 @@ class CustomerCollection extends Component {
 
   render() {
     return (
-      <div className="CustomerCollection">
+      <div className="collection">
         {this.renderCustomerList()}
       </div>
     );
