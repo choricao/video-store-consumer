@@ -8,6 +8,9 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import axios from 'axios';
+
+const URL = "http://localhost:3001/rentals/check-out"
 
 class App extends Component {
 
@@ -17,6 +20,7 @@ class App extends Component {
     this.state = {
       selectedMovie: "",
       selectedCustomer: "",
+      selectedCustomerId: "",
     }
   }
 
@@ -26,10 +30,22 @@ class App extends Component {
     });
   }
 
-  setSelectedCustomer = (name) => {
+  setSelectedCustomer = (name, id) => {
     this.setState({
       selectedCustomer: name,
+      selectedCustomerId: id,
     });
+  }
+
+  makeRental = () => {
+    console.log(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`);
+    axios.post(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   render() {
@@ -43,6 +59,8 @@ class App extends Component {
             <li><Link to="/customers">Customers</Link></li>
             <li>Selected Movie: {this.state.selectedMovie}</li>
             <li>Selected Customer: {this.state.selectedCustomer}</li>
+            <li><button onClick={this.makeRental}>Make Rental</button></li>
+
           </ul>
 
           <hr/>

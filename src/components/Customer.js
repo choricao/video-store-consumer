@@ -7,12 +7,13 @@ class Customer extends Component {
     name: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     accountCredit: PropTypes.string.isRequired,
+    id: PropTypes.number,
     checkedOutMoviesCount: PropTypes.number.isRequired,
     selectedCustomerCallback: PropTypes.func.isRequired,
   }
 
   selectedCustomerCallback = () => {
-    this.props.selectedCustomerCallback(this.props.name);
+    this.props.selectedCustomerCallback(this.props.name, this.props.id);
   }
 
   render () {

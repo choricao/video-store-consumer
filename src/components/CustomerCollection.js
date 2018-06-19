@@ -32,10 +32,11 @@ class CustomerCollection extends Component {
       return (
         <Customer
           key={customer.id}
+          id={customer.id}
           name={customer.name}
           phone={customer.phone}
           accountCredit={customer.account_credit}
-          checkedOutMoviesCount={customer.movies_check_out_count}
+          checkedOutMoviesCount={customer.movies_checked_out_count}
           selectedCustomerCallback={this.props.selectedCustomerCallback}
         />
       );
