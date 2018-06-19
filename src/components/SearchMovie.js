@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const URL = "http://localhost:3001/movies"
 
-class SearchMovies extends Component {
+class SearchMovie extends Component {
 
   render() {
     return (
@@ -16,4 +16,4 @@ class SearchMovies extends Component {
 
 }
 
-export default SearchMovies;
+export default SearchMovie;

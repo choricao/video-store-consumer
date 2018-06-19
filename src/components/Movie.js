@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 
 class Movie extends Component {
 
-  constructor(props) {
-    super(props);
-
-    console.log(props);
-  }
-
   static propTypes = {
     title: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,

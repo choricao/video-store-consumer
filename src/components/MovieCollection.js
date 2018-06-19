@@ -7,8 +7,6 @@ const URL = "http://localhost:3001/movies"
 class MovieCollection extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
-    console.log(props.selectedMovieCallback);
 
     this.state = {
       movies: []

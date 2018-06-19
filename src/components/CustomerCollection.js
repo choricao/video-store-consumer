@@ -36,6 +36,7 @@ class CustomerCollection extends Component {
           phone={customer.phone}
           accountCredit={customer.account_credit}
           checkedOutMoviesCount={customer.movies_check_out_count}
+          selectedCustomerCallback={this.props.selectedCustomerCallback}
         />
       );
     });

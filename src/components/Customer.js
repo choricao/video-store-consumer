@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Customer extends Component {
+
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    accountCredit: PropTypes.string.isRequired,
+    checkedOutMoviesCount: PropTypes.number.isRequired,
+    selectedCustomerCallback: PropTypes.func.isRequired,
+  }
+
+  selectedCustomerCallback = () => {
+    this.props.selectedCustomerCallback(this.props.name);
+  }
 
   render () {
     console.log('in customer component');
@@ -10,6 +23,7 @@ class Customer extends Component {
         <p><strong>Phone:</strong> {this.props.phone}</p>
         <p><strong>Account Credit:</strong> ${this.props.accountCredit}</p>
         <p><strong>Checked Out Movies Count:</strong> {this.props.checkedOutMoviesCount}</p>
+        <button onClick={this.selectedCustomerCallback} >Select This Customer</button>
       </article>
     );
   }
