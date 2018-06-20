@@ -41,7 +41,10 @@ class App extends Component {
     .then((response) => {
       console.log(response);
       this.setState({
-        notification: "Rental successfully added!"
+        notification: "Rental successfully added!",
+        selectedMovie: "",
+        selectedCustomer: "",
+        selectedCustomerId: "",
       })
     })
     .catch((error) => {
