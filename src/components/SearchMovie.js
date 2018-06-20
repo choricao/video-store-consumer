@@ -26,7 +26,6 @@ class SearchMovies extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    console.log(URL + `?query=${this.state.title}`);
     axios.get(URL + `?query=${this.state.title}`)
     .then((response) => {
       this.setState({
@@ -34,7 +33,9 @@ class SearchMovies extends Component {
       })
     })
     .catch((error) => {
-      console.log(error);
+      this.setState({
+        message: error.message,
+      })
     })
   }
 

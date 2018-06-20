@@ -88,16 +88,18 @@ class App extends Component {
             <p className="notification">{this.displayNotification()}</p>
           </div>
 
-          <Route exact path="/" component={SearchMovie} />
-          <Route exact path="/search" component={SearchMovie} />
-          <Route
-            path="/library"
-            render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
-            />
-          <Route
-            path="/customers"
-            render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
-            />
+          <main>
+            <Route exact path="/" component={SearchMovie} />
+            <Route exact path="/search" component={SearchMovie} />
+            <Route
+              path="/library"
+              render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
+              />
+            <Route
+              path="/customers"
+              render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
+              />
+          </main>
         </article>
       </Router>
     );
