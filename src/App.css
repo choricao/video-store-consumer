@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-main {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
 header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2.5fr 2.5fr 150px;
@@ -53,6 +47,6 @@ header p {
 .notification {
   display: flex;
   justify-content: center;
-  margin: .25px;
+  margin: 0px;
   background: #ffcc5e;
 }

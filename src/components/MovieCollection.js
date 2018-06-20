@@ -23,7 +23,7 @@ class MovieCollection extends Component {
     })
     .catch((error) => {
       this.setState({
-        message: error.message
+        notification: error.message
       })
     });
   }

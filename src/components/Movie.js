@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import PropTypes from 'prop-types';
-import css from './Movie.css'
+import './Movie.css'
 
 const URL = "http://localhost:3001/movies"
 
@@ -24,17 +24,21 @@ class Movie extends Component {
     axios.post(URL +
       `?title=${this.props.title}&release_date=${this.props.releaseDate}&image_url=${this.props.imageURL}&overview=${this.props.overview}`)
     .then((response) => {
-      console.log(response)
+      this.setState({
+        notification: `Successfully added ${this.props.title}.`
+      });
     })
     .catch((error) => {
-      console.log(error);
+      this.setState({
+        notification: error.message,
+      });
     });
   }
 
   renderButton = () => {
     if (this.props.buttonName === "Select This Movie") {
       return <button onClick={this.selectedMovieCallback} >{this.props.buttonName}</button>
-    } else if (this.props.buttonName === "Add This Movie to Library") {
+    } else if (this.props.buttonName === "Add To Library") {
       return <button onClick={this.addMovie} >{this.props.buttonName}</button>
     }
   }

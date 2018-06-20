@@ -16,12 +16,12 @@ class SearchMovies extends Component {
   }
 
   onFieldChange = (event) => {
-  const fieldName = event.target.name;
-  const fieldValue = event.target.value;
-  const updateState = {};
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value;
+    const updateState = {};
 
-  updateState[fieldName] = fieldValue;
-  this.setState(updateState);
+    updateState[fieldName] = fieldValue;
+    this.setState(updateState);
   }
 
   onSubmit = (event) => {
@@ -34,7 +34,7 @@ class SearchMovies extends Component {
     })
     .catch((error) => {
       this.setState({
-        error: error.message,
+        notification: error.message,
       })
     })
   }
@@ -48,7 +48,7 @@ class SearchMovies extends Component {
           releaseDate={movie.release_date}
           imageURL={movie.image_url}
           overview={movie.overview}
-          buttonName="Add This Movie to Library"
+          buttonName="Add To Library"
         />
       );
     });

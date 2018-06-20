@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
-import MovieCollection from './components/MovieCollection';
-import CustomerCollection from './components/CustomerCollection';
-import SearchMovie from './components/SearchMovie';
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
 import axios from 'axios';
+
+import SearchMovie from './components/SearchMovie';
+import MovieCollection from './components/MovieCollection';
+import CustomerCollection from './components/CustomerCollection';
+import './App.css';
 
 const URL = "http://localhost:3001/rentals/check-out"
 
@@ -39,41 +40,34 @@ class App extends Component {
   makeRental = () => {
     axios.post(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`)
     .then((response) => {
-      console.log(response);
       this.setState({
-        notification: "Rental successfully added!",
+        notification: "Rental successfully added.",
         selectedMovie: "",
         selectedCustomer: "",
         selectedCustomerId: "",
       })
     })
     .catch((error) => {
-      console.log(error);
       this.setState({
-        error: error.message
+        notification: error.message
       })
     })
   }
 
   displayNotification = () => {
-    if (this.state.notification != "") {
-      setTimeout(this.notificationTimer, 3000);
-      return this.state.notification
-    } else if (this.state.error != "") {
-      setTimeout(this.notificationTimer, 3000);
-      return this.state.error
-    }
+    setTimeout(this.notificationTimer, 6000);
+    return this.state.notification
   }
 
   notificationTimer = () => {
-    this.setState({ notification: "", error: ""})
+    this.setState({ notification: ""})
   }
 
   render() {
     return (
       <Router>
         <article>
-          <div className="fixed-header">
+          <section className="fixed-header">
             <header>
               <Link className="button" to="/">Search</Link>
               <Link className="button" to="/library">Library</Link>
@@ -89,9 +83,9 @@ class App extends Component {
               <button className="button" onClick={this.makeRental}>Make Rental</button>
             </header>
             <p className="notification">{this.displayNotification()}</p>
-          </div>
+          </section>
 
-          <main>
+          <section>
             <Route exact path="/" component={SearchMovie} />
             <Route exact path="/search" component={SearchMovie} />
             <Route
@@ -102,7 +96,7 @@ class App extends Component {
               path="/customers"
               render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
               />
-          </main>
+          </section>
         </article>
       </Router>
     );
