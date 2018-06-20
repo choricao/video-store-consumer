@@ -23,7 +23,7 @@ class CustomerCollection extends Component {
     })
     .catch((error) => {
       this.setState({
-        error: error.message
+        message: error.message
       })
     });
   }

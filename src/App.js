@@ -38,14 +38,27 @@ class App extends Component {
   }
 
   makeRental = () => {
-    console.log(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`);
     axios.post(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`)
     .then((response) => {
       console.log(response);
+      this.setState({
+        message: `Successfully created rental: customer - ${this.state.selectedCustomer}, movie - ${this.state.selectedMovie}`,
+        selectedMovie: "",
+        selectedCustomer: "",
+        selectedCustomerId: "",
+      });
     })
     .catch((error) => {
-      console.log(error);
+      this.setState({
+        message: error.message,
+      });
     })
+  }
+
+  renderMessage = () => {
+    if (this.state.message) {
+      return <p className="message">{this.state.message}</p>
+    }
   }
 
   render() {
@@ -68,16 +81,20 @@ class App extends Component {
             <button className="button" onClick={this.makeRental}>Make Rental</button>
           </header>
 
-          <Route exact path="/" component={SearchMovie} />
-          <Route exact path="/search" component={SearchMovie} />
-          <Route
-            path="/library"
-            render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
-            />
-          <Route
-            path="/customers"
-            render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
-            />
+          <main>
+            {this.renderMessage()}
+
+            <Route exact path="/" component={SearchMovie} />
+            <Route exact path="/search" component={SearchMovie} />
+            <Route
+              path="/library"
+              render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
+              />
+            <Route
+              path="/customers"
+              render={(props) => <CustomerCollection {...props} selectedCustomerCallback={this.setSelectedCustomer} />}
+              />
+          </main>
         </article>
       </Router>
     );

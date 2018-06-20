@@ -10,7 +10,7 @@ class MovieCollection extends Component {
     super(props);
 
     this.state = {
-      movies: []
+      movies: [],
     }
   }
 
@@ -23,7 +23,7 @@ class MovieCollection extends Component {
     })
     .catch((error) => {
       this.setState({
-        error: error.message
+        message: error.message
       })
     });
   }
