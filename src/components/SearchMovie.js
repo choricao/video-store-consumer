@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Movie from './Movie.js';
-import './MovieCollection.css';
+import './SearchMovie.css';
 
 const URL = "http://localhost:3001/movies"
 
@@ -29,12 +29,12 @@ class SearchMovies extends Component {
     axios.get(URL + `?query=${this.state.title}`)
     .then((response) => {
       this.setState({
-        movies: response.data
+        movies: response.data,
       })
     })
     .catch((error) => {
       this.setState({
-        message: error.message,
+        error: error.message,
       })
     })
   }
@@ -68,7 +68,7 @@ class SearchMovies extends Component {
           />
           <input className="button" type="submit" />
         </form>
-        <section className="collection">
+        <section className="search-collection">
           {this.renderMovieList()}
         </section>
       </article>
