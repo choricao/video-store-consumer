@@ -52,7 +52,6 @@ class MovieCollection extends Component {
       </div>
     );
   }
-
 }
 
 export default MovieCollection;

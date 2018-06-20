@@ -11,6 +11,14 @@ header {
   background: #7d9174;
 }
 
+.fixed-header {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 99;
+}
+
 .movie-selection {
   margin-left: 50px;
 }
@@ -34,4 +42,11 @@ header p {
 
 .button:hover, button:hover {
   color: #24700d;
+}
+
+.notification {
+  display: flex;
+  justify-content: center;
+  margin: .25px;
+  background: #ffcc5e;
 }

@@ -3,6 +3,7 @@
   flex-flow: column nowrap;
   align-items: center;
   padding: 20px;
+  margin-top: 100px;
 }
 
 form {
@@ -25,5 +26,5 @@ input {
 .collection {
   display: flex;
   flex-flow: row wrap;
-  margin-top: 20px;
+  margin-top: 100px;
 }
