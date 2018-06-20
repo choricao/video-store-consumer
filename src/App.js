@@ -11,7 +11,7 @@ import MovieCollection from './components/MovieCollection';
 import CustomerCollection from './components/CustomerCollection';
 import './App.css';
 
-const URL = "https://vsapi-env.nnb7zenpwg.us-west-2.elasticbeanstalk.com/check-out"
+const URL = "https://pure-everglades-58710.herokuapp.com/rentals/check-out"
 
 class App extends Component {
   constructor() {
