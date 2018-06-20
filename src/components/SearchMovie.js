@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Movie from './Movie.js';
+import './MovieCollection.css';
 
 const URL = "http://localhost:3001/movies"
 
@@ -55,7 +56,7 @@ class SearchMovies extends Component {
 
   render() {
     return (
-      <article>
+      <article className="search-container">
         <form onSubmit={this.onSubmit}>
           <label htmlFor="title" >Search: </label>
           <input
@@ -66,7 +67,9 @@ class SearchMovies extends Component {
           />
           <input className="button" type="submit" />
         </form>
-        {this.renderMovieList()}
+        <section className="collection">
+          {this.renderMovieList()}
+        </section>
       </article>
     )
   }

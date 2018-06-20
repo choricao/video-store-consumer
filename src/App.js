@@ -56,8 +56,14 @@ class App extends Component {
             <Link className="button" to="/">Search</Link>
             <Link className="button" to="/library">Library</Link>
             <Link className="button" to="/customers">Customers</Link>
-            <p>Selected Movie: {this.state.selectedMovie}</p>
-            <p>Selected Customer: {this.state.selectedCustomer}</p>
+            <section className="movie-selection">
+              <p><strong>Selected Movie</strong></p>
+              <p>{this.state.selectedMovie}</p>
+            </section>
+            <section className="customer-selection">
+              <p><strong>Selected Customer</strong></p>
+              <p>{this.state.selectedCustomer}</p>
+            </section>
             <button className="button" onClick={this.makeRental}>Make Rental</button>
           </header>
 
