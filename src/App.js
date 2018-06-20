@@ -38,7 +38,6 @@ class App extends Component {
   }
 
   makeRental = () => {
-    console.log(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`);
     axios.post(URL + `?customer_id=${this.state.selectedCustomerId}&title=${this.state.selectedMovie}`)
     .then((response) => {
       console.log(response);
