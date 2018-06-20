@@ -3,7 +3,7 @@ import axios from 'axios';
 import Movie from './Movie.js';
 import './SearchMovie.css';
 
-const URL = "http://localhost:3001/movies"
+const URL = "https://vsapi-env.nnb7zenpwg.us-west-2.elasticbeanstalk.com/movies"
 
 class SearchMovies extends Component {
   constructor () {

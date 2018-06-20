@@ -11,7 +11,7 @@ import MovieCollection from './components/MovieCollection';
 import CustomerCollection from './components/CustomerCollection';
 import './App.css';
 
-const URL = "http://localhost:3001/rentals/check-out"
+const URL = "https://vsapi-env.nnb7zenpwg.us-west-2.elasticbeanstalk.com/check-out"
 
 class App extends Component {
   constructor() {

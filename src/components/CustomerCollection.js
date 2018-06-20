@@ -3,7 +3,7 @@ import axios from 'axios'
 import Customer from './Customer.js'
 import './CustomerCollection.css';
 
-const URL = "http://localhost:3001/customers"
+const URL = "https://vsapi-env.nnb7zenpwg.us-west-2.elasticbeanstalk.com/customers"
 
 class CustomerCollection extends Component {
   constructor() {
