@@ -6,8 +6,8 @@ import './SearchMovie.css';
 const URL = "https://pure-everglades-58710.herokuapp.com/movies"
 
 class SearchMovies extends Component {
-  constructor () {
-    super ();
+  constructor (props) {
+    super (props);
 
     this.state = {
       title: "",
@@ -49,6 +49,7 @@ class SearchMovies extends Component {
           imageURL={movie.image_url}
           overview={movie.overview}
           buttonName="Add To Library"
+          newMovieMessageCallback={this.props.newMovieMessageCallback}
         />
       );
     });

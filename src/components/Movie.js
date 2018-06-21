@@ -20,18 +20,24 @@ class Movie extends Component {
     this.props.selectedMovieCallback(this.props.title);
   }
 
+  newMovieMessageCallback = () => {
+    this.props.newMovieMessageCallback(this.state.notification);
+  }
+
   addMovie = () => {
     axios.post(URL +
       `?title=${this.props.title}&release_date=${this.props.releaseDate}&image_url=${this.props.imageURL}&overview=${this.props.overview}`)
     .then((response) => {
       this.setState({
-        notification: `Successfully added ${this.props.title}.`
+        notification: `${this.props.title} added to library.`
       });
+      this.newMovieMessageCallback();
     })
     .catch((error) => {
       this.setState({
         notification: error.message,
       });
+      this.newMovieMessageCallback();
     });
   }
 
@@ -39,7 +45,7 @@ class Movie extends Component {
     if (this.props.buttonName === "Select This Movie") {
       return <button onClick={this.selectedMovieCallback} >{this.props.buttonName}</button>
     } else if (this.props.buttonName === "Add To Library") {
-      return <button onClick={this.addMovie} >{this.props.buttonName}</button>
+      return <button onClick={this.addMovie}>{this.props.buttonName}</button>
     }
   }
 

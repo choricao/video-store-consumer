@@ -54,7 +54,12 @@ class App extends Component {
     })
   }
 
-  displayNotification = () => {
+  displayNotification = (notification) => {
+    if (notification) {
+      this.setState({
+        notification,
+      })
+    }
     setTimeout(this.notificationTimer, 6000);
     return this.state.notification
   }
@@ -86,8 +91,11 @@ class App extends Component {
           </section>
 
           <section>
-            <Route exact path="/" component={SearchMovie} />
-            <Route exact path="/search" component={SearchMovie} />
+            <Route
+              path="/search"
+              render={(props) => <SearchMovie {...props}
+              newMovieMessageCallback={this.displayNotification} />}
+            />
             <Route
               path="/library"
               render={(props) => <MovieCollection {...props} selectedMovieCallback={this.setSelectedMovie} />}
