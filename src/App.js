@@ -74,7 +74,7 @@ class App extends Component {
         <article>
           <section className="fixed-header">
             <header>
-              <Link className="button" to="/">Search</Link>
+              <Link className="button" to="/search">Search</Link>
               <Link className="button" to="/library">Library</Link>
               <Link className="button" to="/customers">Customers</Link>
               <section className="movie-selection">
@@ -91,6 +91,11 @@ class App extends Component {
           </section>
 
           <section>
+            <Route
+              exact path="/"
+              render={(props) => <SearchMovie {...props}
+              newMovieMessageCallback={this.displayNotification} />}
+            />
             <Route
               path="/search"
               render={(props) => <SearchMovie {...props}
